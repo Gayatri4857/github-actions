@@ -1,0 +1,21 @@
+name: Maven--version
+on:
+  push:
+    branches:
+      -  main
+env: 
+  JDK_VERSION: "openjdk11-jdk"
+jobs:  
+
+  install-java:
+    runs-on: ubuntu-latest
+    container:
+      image: alpine:latest
+    steps:
+      - name: install java
+        run: |
+          apk add --no-cache $JDK_VERSION 
+          java --version
+          echo "MAVEN_VERSION=123" >> $GITHUB_ENV
+      - name: print maven version
+        run: echo $MAVEN_VERSION
