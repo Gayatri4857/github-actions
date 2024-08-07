@@ -1,4 +1,4 @@
-name: Print maven
+name: Print maven version
 on:
   push:
     branches:
