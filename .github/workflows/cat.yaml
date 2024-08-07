@@ -1,0 +1,30 @@
+name: Use cat command
+
+on:
+ push:
+   branches:
+     -main
+
+jobs:
+ helloworld:
+   runs-on: ubuntu-latest
+
+   steps:
+     - name: print hello
+       run: cat /etc/os-release
+
+     - name: print hello
+       run: echo "hello world"
+ 
+ chaloworld:
+    runs-on: ubuntu-latest
+
+    steps:
+     - name: print hello
+       run: echo "hello world"
+
+     - name: print challo
+       run: echo "challo world"
+        
+   
+ 
