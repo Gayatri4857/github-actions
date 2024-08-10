@@ -1,0 +1,29 @@
+name: Install Maven and Print Version
+on:
+  push:
+    branches:
+      - main
+
+env: 
+  MAVEN_VERSION: "3.8.8"  # Specify the desired Maven version here
+
+jobs:  
+  install-maven:
+    runs-on: ubuntu-latest
+    container:
+      image: alpine:latest
+    steps:
+      - name: Install Maven
+        run: |
+          apk add --no-cache maven
+          mvn --version
+          echo "INSTALLED_MAVEN_VERSION=$(mvn -v | grep 'Apache Maven' | awk '{print $3}')" >> $GITHUB_ENV
+
+      - name: Print Maven Version
+        run: echo $INSTALLED_MAVEN_VERSION
+
+  print-maven-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Maven Version
+        run: echo $INSTALLED_MAVEN_VERSION
